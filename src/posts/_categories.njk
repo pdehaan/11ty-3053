@@ -1,0 +1,22 @@
+---
+pagination:
+    data: collections.categories
+    size: 1
+    alias: category
+    addAllPagesToCollections: true
+permalink: /blog/categories/{{ category | slugify}}/
+layout: base.njk
+eleventyComputed:
+  title: "{{ category }} Entries"
+---
+
+<pre>{{ title }}</pre>
+
+<h1>All {{ category }} entries</h1>
+<ul>
+{% for post in collections.categories[category] %}
+  <li>
+    <a href="{{ post.url }}">{{ post.data.title }}</a>
+  </li>
+{% endfor %}
+</ul>
